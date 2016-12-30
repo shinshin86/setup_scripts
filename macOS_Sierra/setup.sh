@@ -7,8 +7,6 @@
 set -e
 
 bash ./setup_scripts/brew_setup.sh
-source ~/.zshrc
-
 bash ./setup_scripts/zsh_setup.sh
 source ~/.zshrc
 
@@ -22,19 +20,12 @@ select yn in "Yes" "No"; do
 done
 
 bash ./setup_scripts/oh_my_zsh.sh
-source ~/.zshrc
-
 bash ./setup_scripts/zaw_setup.sh
-source ~/.zshrc
-
 bash ./setup_scripts/rbenv_setup.sh
-source ~/.zshrc
-
 bash ./setup_scripts/pyenv_setup.sh
-source ~/.zshrc
-
 bash ./setup_scripts/nvm_setup.sh
-source ~/.zshrc
-
 bash ./setup_scripts/nvm_setup.sh
+bash ./setup_scripts/tree_setup.sh
+bash ./setup_scripts/less_color.sh
+
 source ~/.zshrc

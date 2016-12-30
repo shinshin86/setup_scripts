@@ -9,11 +9,11 @@ echo "vim setting : start..."
 cd ~
 brew install wget
 ### wget path >> ~/.zshrc
-export PATH=/usr/local/Cellar/wget/1.18/bin:$PATH >> ~/.zshrc
+export PATH=/usr/local/Cellar/wget/*/bin:$PATH >> ~/.zshrc
 
 brew install lua
 brew install vim --with-lua
-export PATH=/usr/local/Cellar/vim/8.0.0134/bin:$PATH >> ~/.zshrc
+export PATH=/usr/local/Cellar/vim/*/bin:$PATH >> ~/.zshrc
 
 wget https://raw.githubusercontent.com/shinshin86/dotfiles/master/.vimrc
 
