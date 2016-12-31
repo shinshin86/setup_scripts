@@ -21,6 +21,7 @@ done
 
 bash ./setup_scripts/oh_my_zsh.sh
 bash ./setup_scripts/zaw_setup.sh
+bash ./setup_scripts/wget_setup.sh
 bash ./setup_scripts/rbenv_setup.sh
 bash ./setup_scripts/pyenv_setup.sh
 bash ./setup_scripts/nvm_setup.sh

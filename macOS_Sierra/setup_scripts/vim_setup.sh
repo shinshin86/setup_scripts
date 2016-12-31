@@ -6,23 +6,32 @@
 
 echo "vim setting : start..."
 
-cd ~
-brew install wget
-### wget path >> ~/.zshrc
-export PATH=/usr/local/Cellar/wget/*/bin:$PATH >> ~/.zshrc
-
 brew install lua
 brew install vim --with-lua
 export PATH=/usr/local/Cellar/vim/*/bin:$PATH >> ~/.zshrc
 
-wget https://raw.githubusercontent.com/shinshin86/dotfiles/master/.vimrc
+# .vimrc setup
+curl https://raw.githubusercontent.com/shinshin86/dotfiles/master/.vimrc > ~/.vimrc
 
 mkdir -p ~/.vim/bundle
 mkdir -p ~/.vim/colors
 mkdir -p ~/.vim/ftplugin
 mkdir -p ~/.vim/dicts
-git clone git://github.com/Shougo/neobundle.vim ~/.vim/bundle/neobundle.vim
-wget https://raw.githubusercontent.com/w0ng/vim-hybrid/master/colors/hybrid.vim ~/.vim/colors/hybrid.vim
+
+# vimbackup setup
+mkdir ~/vimbackup
+
+# NeoBundle setup
+# https://github.com/Shougo/neobundle.vim
+curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh
+sh ./install.sh
+rm -rf install.sh
+
+# Hybrid vim setup
+# https://github.com/w0ng/vim-hybrid
+curl  https://raw.githubusercontent.com/w0ng/vim-hybrid/master/colors/hybrid.vim > ~/.vim/colors/hybrid.vim
+
+source ~/.vimrc
 
 ### After task ###
 
