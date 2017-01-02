@@ -28,5 +28,6 @@ bash ./setup_scripts/nvm_setup.sh
 bash ./setup_scripts/nvm_setup.sh
 bash ./setup_scripts/tree_setup.sh
 bash ./setup_scripts/less_color.sh
+bash ./setup_scripts/golang_setup.sh
 
 source ~/.zshrc
