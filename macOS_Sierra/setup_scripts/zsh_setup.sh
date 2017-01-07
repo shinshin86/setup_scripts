@@ -6,8 +6,8 @@
 
 brew install --without-etcdir zsh
 
-"/usr/local/bin/zsh" >> /etc/shells
-
-chsh -s /usr/local/bin/zsh
-echo "********** zsh setup : Successful!! *********"
-echo "Please, terminal reboot!!"
+# "/usr/local/bin/zsh" >> /etc/shells
+echo "Please execute command => [sudo vim /etc/shells]"
+echo "Add this path [/usr/local/bin/zsh]"
+echo "After  => [chsh -s /usr/local/bin/zsh]"
+echo "Please terminal reboot!!"

@@ -21,4 +21,5 @@ fi\n
 echo "************ pyenv setup : Successful! ************"
 echo "pyenv install -l "
 echo "pyenv install {Python Version}"
-echo "pyenv global {Python Version}"
+echo "pyenv global {Python2 Version} {Python3 Version}"
+echo "Example => pyenv global 2.7.13 3.5.2 "
