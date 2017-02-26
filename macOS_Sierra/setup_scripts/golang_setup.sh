@@ -5,6 +5,8 @@
 #====================================================================
 
 brew install go
+brew install qt5 pkg-config
+brew link --force qt5
 
 mkdir ~/gocode
 echo "export GOPATH=\$HOME/gocode" >> ~/.zshrc
