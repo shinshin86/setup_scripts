@@ -37,3 +37,8 @@ source ~/.vimrc
 
 echo "******* Vim setup : Successful! *********"
 echo "Let's launch Vim and 'NeoBundleInstall'! "
+
+echo "****** Next setup MacVim! **********"
+echo "Install MacVim then let's check  => 'mac_vim_setup.sh'"
+echo "This file setting copy to '.zshrc' file"
+
