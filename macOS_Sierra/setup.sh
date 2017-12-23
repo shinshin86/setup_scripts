@@ -1,34 +1,94 @@
 #!/bin/bash
+set -Cu
 
 #====================================================================
 # Setup script
 #====================================================================
 
-set -e
+brew -v &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : brew"
+else
+  bash ./setup_scripts/brew_setup.sh
+fi
 
-bash ./setup_scripts/brew_setup.sh
-bash ./setup_scripts/zsh_setup.sh
-source ~/.zshrc
-
-echo "please reboot!"
-echo "do you reboot?"
-select yn in "Yes" "No"; do
+zsh --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : zsh"
+else
+  bash ./setup_scripts/zsh_setup.sh
+  source ~/.zshrc
+  echo "please reboot!"
+  echo "do you reboot?"
+  select yn in "Yes" "No"; do
     case $yn in
-        Yes ) exit;;
-        No ) echo "OK! Not reboot!"; break;;
+      Yes ) exit;;
+      No ) echo "OK! Not reboot!"; break;;
     esac
-done
+  done
+fi
 
-bash ./setup_scripts/oh_my_zsh.sh
-bash ./setup_scripts/zaw_setup.sh
-bash ./setup_scripts/wget_setup.sh
-bash ./setup_scripts/rbenv_setup.sh
-bash ./setup_scripts/pyenv_setup.sh
-bash ./setup_scripts/nvm_setup.sh
-bash ./setup_scripts/nvm_setup.sh
-bash ./setup_scripts/tree_setup.sh
-bash ./setup_scripts/less_color.sh
-bash ./setup_scripts/golang_setup.sh
-bash ./setup_scripts/opencv_setup.sh
+
+#bash ./setup_scripts/oh_my_zsh.sh
+if [ -e ~/.zsh/zaw ]; then
+  echo "---> It is already installed : zaw"
+else
+  bash ./setup_scripts/zaw_setup.sh
+fi
+
+wget --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : wget"
+else
+  bash ./setup_scripts/wget_setup.sh
+fi
+
+rbenv --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : rbenv"
+else
+  bash ./setup_scripts/rbenv_setup.sh
+fi
+
+pyenv --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : pyenv"
+else
+  bash ./setup_scripts/pyenv_setup.sh
+fi
+
+nvm --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : nvm"
+else
+  bash ./setup_scripts/nvm_setup.sh
+fi
+
+tree --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : tree"
+else
+  bash ./setup_scripts/tree_setup.sh
+fi
+
+if [ $LESS = "-R" ] ; then
+  echo "---> It is already installed : less_color"
+else
+  bash ./setup_scripts/less_color.sh
+fi
+
+go version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : golang"
+else
+  bash ./setup_scripts/golang_setup.sh
+fi
+
+brew list opencv &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : opencv"
+else
+  bash ./setup_scripts/opencv_setup.sh
+fi
 
 source ~/.zshrc
