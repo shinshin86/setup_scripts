@@ -12,6 +12,16 @@ env LANGUAGE=C LC_MESSAGES=C xdg-user-dirs-gtk-update
 
 sudo apt-get install -y vim curl git python-software-properties build-essential libssl-dev  bison openssl libreadline6 libreadline6-dev git-core zlib1g zlib1g-dev libyaml-dev libsqlite3-0 libsqlite3-dev sqlite3 libxml2-dev libxslt-dev autoconf libc6-dev ncurses-dev && sudo apt-get install -y zsh && curl -L http://install.ohmyz.sh | sh
 
+#====================================================================
+# gnome-tweak-tool Setting
+#====================================================================
+cd ~
+gnome-tweak-tool --help &> /dev/null
+if [ -e ~/.rbenv ]; then
+  echo "--->It is already install : gnome-tweak-tool"
+else
+  sudo apt-get install -y gnome-tweak-tool
+fi
 
 #====================================================================
 # Ruby Setting
@@ -163,7 +173,7 @@ if [ $? -eq 0 ] ; then
   echo "---> It is already installed : vim"
 else
   # Install for activation for lua
-  sudo apt-get install vim-gnome
+  sudo apt-get install -y vim-gnome
   curl https://raw.githubusercontent.com/Shougo/neobundle.vim/master/bin/install.sh > install.sh && sh ./install.sh
 fi
 
@@ -179,5 +189,69 @@ else
   sudo apt-get update
   sudo apt-get install -y mongodb-org
   sudo service mongod restart
+fi
+
+
+#====================================================================
+# Chromium Install
+#====================================================================
+chromium-browser --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : Chromium"
+else
+  sudo apt-get install -y chromium-browser
+fi
+
+#====================================================================
+# openssh-server Install
+#====================================================================
+ssh -V &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : openssh-server"
+else
+  sudo apt-get install -y openssh-server
+fi
+
+#====================================================================
+# Golang Install
+#====================================================================
+go version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : Golang"
+else
+  sudo add-apt-repository ppa:longsleep/golang-backports
+  sudo apt-get update
+  sudo apt-get install -y golang-go
+fi
+
+#====================================================================
+# Atom Install
+#====================================================================
+cd ~
+atom --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : Atom"
+else
+  sudo add-apt-repository ppa:webupd8team/atom
+  sudo apt-get update
+  sudo apt-get install -y atom
+
+  wget https://raw.githubusercontent.com/shinshin86/dotfiles/master/apm_package_list.txt
+  mv apm_package_list.txt ~/.atom/my-packages.txt
+  apm install --packages-file ~/.atom/my-packages.txt
+fi
+
+#====================================================================
+# Visual Studio Code Install
+#====================================================================
+code --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : Visual Studio Code"
+else
+  curl https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor > microsoft.gpg
+  sudo mv microsoft.gpg /etc/apt/trusted.gpg.d/microsoft.gpg
+  sudo sh -c 'echo "deb [arch=amd64] http://packages.microsoft.com/repos/vscode stable main" > /etc/apt/sources.list.d/vscode.list'
+  sudo apt-get update
+  sudo apt-get install -y code
 fi
 
