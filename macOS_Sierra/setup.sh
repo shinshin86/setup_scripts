@@ -91,4 +91,12 @@ else
   bash ./setup_scripts/opencv_setup.sh
 fi
 
+# mac update all command
+alias mac_update &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already setup : mac_update command"
+else
+  echo "alias mac_update='sudo softwareupdate --install --all'" >> ~/.zshrc
+fi
+
 source ~/.zshrc
