@@ -267,3 +267,10 @@ else
   sudo apt-get install -y code
 fi
 
+#====================================================================
+# tmux Install
+#====================================================================
+cd ~
+sudo apt-get install -y tmux
+wget https://raw.githubusercontent.com/shinshin86/dotfiles/master/.tmux.conf
+
