@@ -274,3 +274,15 @@ cd ~
 sudo apt-get install -y tmux
 wget https://raw.githubusercontent.com/shinshin86/dotfiles/master/.tmux.conf
 
+#====================================================================
+# gitconfig setup
+#====================================================================
+if [ -e ~/.gitconfig ]; then
+  echo "--->It is already setup : gitconfig"
+else
+  cd ~
+  wget https://raw.githubusercontent.com/shinshin86/dotfiles/master/.gitconfig
+
+  echo "Let's set ---> user.name and user.email"
+fi
+
