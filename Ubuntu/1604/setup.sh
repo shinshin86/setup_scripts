@@ -270,9 +270,14 @@ fi
 #====================================================================
 # tmux Install
 #====================================================================
-cd ~
-sudo apt-get install -y tmux
-wget https://raw.githubusercontent.com/shinshin86/dotfiles/master/.tmux.conf
+tmux -V &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : tmux"
+else
+  cd ~
+  sudo apt-get install -y tmux
+  wget https://raw.githubusercontent.com/shinshin86/dotfiles/master/.tmux.conf
+fi
 
 #====================================================================
 # gitconfig setup
