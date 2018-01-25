@@ -91,6 +91,19 @@ else
   bash ./setup_scripts/opencv_setup.sh
 fi
 
+# NeoVim
+pip3 --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  nvim --version &> /dev/null
+  if [ $? -eq 0 ] ; then
+    echo "---> It is already installed : nvim"
+  else
+    bash ./setup_scripts/neo_vim_setup.sh
+  fi
+else
+  echo "---> Let's setup pip3(Python3)"
+fi
+
 # mac update all command
 alias mac_update &> /dev/null
 if [ $? -eq 0 ] ; then
