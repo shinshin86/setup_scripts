@@ -248,9 +248,11 @@ else
   sudo apt-get update
   sudo apt-get install -y atom
 
-  wget https://raw.githubusercontent.com/shinshin86/dotfiles/master/apm_package_list.txt
-  mv apm_package_list.txt ~/.atom/my-packages.txt
-  apm install --packages-file ~/.atom/my-packages.txt
+  echo "------------------> Let's setup for apm!!"
+  echo "apm login # login at your github account"
+  echo "bash atom_packages_setup.sh"
+  echo "### This process takes long time. ###"
+  echo "-----------------------------------------"
 fi
 
 #====================================================================
