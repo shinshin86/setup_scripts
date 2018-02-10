@@ -293,3 +293,34 @@ else
   echo "Let's set ---> user.name and user.email"
 fi
 
+#====================================================================
+# neovim setup
+#====================================================================
+neovim --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "--->It is already setup : neovim"
+else
+  pip3 --version &> /dev/null
+  if [ $? -eq 0 ] ; then
+    cd ~
+    sudo apt-get install -y software-properties-common
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    sudo apt-get update
+    sudo apt-get install -y neovim
+    pip3 install -U pip3
+
+    cd ~
+    mkdir ~/.config
+    git clone https://github.com/shinshin86/dotfiles.git
+    cp -pR dotfiles/.config/dein ~/.config/
+    cp -pR dotfiles/.config/nvim ~/.config/
+
+    echo '# NeoVim setting' >> ~/.zshrc
+    echo 'export XDG_CONFIG_HOME="$HOME/.config"' >> ~/.zshrc
+    echo 'alias nv="nvim"' >> ~/.zshrc
+    source ~/.zshrc
+  else
+    echo "------> Please install python3!!"
+  fi
+fi
+
