@@ -104,6 +104,14 @@ else
   echo "---> Let's setup pip3(Python3)"
 fi
 
+# peco
+peco --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : peco"
+else
+  bash ./setup_scripts/peco_setup.sh
+fi
+
 # mac update all command
 alias mac_update &> /dev/null
 if [ $? -eq 0 ] ; then
