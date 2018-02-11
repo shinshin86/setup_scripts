@@ -248,9 +248,11 @@ else
   sudo apt-get update
   sudo apt-get install -y atom
 
-  wget https://raw.githubusercontent.com/shinshin86/dotfiles/master/apm_package_list.txt
-  mv apm_package_list.txt ~/.atom/my-packages.txt
-  apm install --packages-file ~/.atom/my-packages.txt
+  echo "------------------> Let's setup for apm!!"
+  echo "apm login # login at your github account"
+  echo "bash atom_packages_setup.sh"
+  echo "### This process takes long time. ###"
+  echo "-----------------------------------------"
 fi
 
 #====================================================================
@@ -289,5 +291,36 @@ else
   wget https://raw.githubusercontent.com/shinshin86/dotfiles/master/.gitconfig
 
   echo "Let's set ---> user.name and user.email"
+fi
+
+#====================================================================
+# neovim setup
+#====================================================================
+neovim --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "--->It is already setup : neovim"
+else
+  pip3 --version &> /dev/null
+  if [ $? -eq 0 ] ; then
+    cd ~
+    sudo apt-get install -y software-properties-common
+    sudo add-apt-repository ppa:neovim-ppa/unstable
+    sudo apt-get update
+    sudo apt-get install -y neovim
+    pip3 install -U pip3
+
+    cd ~
+    mkdir ~/.config
+    git clone https://github.com/shinshin86/dotfiles.git
+    cp -pR dotfiles/.config/dein ~/.config/
+    cp -pR dotfiles/.config/nvim ~/.config/
+
+    echo '# NeoVim setting' >> ~/.zshrc
+    echo 'export XDG_CONFIG_HOME="$HOME/.config"' >> ~/.zshrc
+    echo 'alias nv="nvim"' >> ~/.zshrc
+    source ~/.zshrc
+  else
+    echo "------> Please install python3!!"
+  fi
 fi
 
