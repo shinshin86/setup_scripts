@@ -112,6 +112,14 @@ else
   bash ./setup_scripts/peco_setup.sh
 fi
 
+# fzf
+fzf --version &> /dev/null
+if [ $? -eq 0 ] ; then
+  echo "---> It is already installed : fzf"
+else
+  bash ./setup_scripts/fzf_setup.sh
+fi
+
 # mac update all command
 alias mac_update &> /dev/null
 if [ $? -eq 0 ] ; then
